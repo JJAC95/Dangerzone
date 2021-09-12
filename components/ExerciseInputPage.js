@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, Image, Button, StyleSheet } from 'react-native';
+import { View, Text, Image, Button, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import Constants from 'expo-constants'
 import SetRepWeight from './SetRepWeight';
-import { useDimensions } from '@react-native-community/hooks'
+import styles from '../styles/styles';
+
+//component for exercise input page, ie if you did an arms workout you'd have bicep curl, tri pull downs etc, and input the weight reps and sets for each one, will take props of exercise name, image, if cardio could have distance / speed / time etc instead
+//and have functions to handle the save of each exercise to add to the correct databse/list for future referencing
 export default function ExerciseInputPage() {
 
     return (
@@ -23,12 +25,3 @@ export default function ExerciseInputPage() {
 }
 
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      paddingTop: Platform.OS === 'android' ? Constants.statusBarHeight : 0,
-      alignItems: 'center',
-      justifyContent: 'center'
-    }
-  });
