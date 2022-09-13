@@ -8,46 +8,53 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ExerciseList } from "./components/ExerciseList";
 import { ExercisePage } from "./components/ExercisePage";
+import { WorkoutsPage } from "./components/WorkoutsPage";
+import { LogExercise } from "./components/LogExercise";
+import { ProfilePage } from "./components/ProfilePage";
 import { Homepage } from "./components/Homepage";
+import { Statspage } from "./components/StatsPage";
+import { SettingsPage } from "./components/SettingsPage";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 export default function App() {
   console.log(useDimensions());
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+      <Tab.Navigator>
+        <Tab.Screen
           name="Home"
           component={Homepage}
           options={{ title: "Homepage" }}
         />
-        <Stack.Screen
-          name="ExerciseList"
-          component={ExerciseList}
-          options={{ title: "Exercise List" }}
+        <Tab.Screen
+          name="Workouts Page"
+          component={WorkoutsPage}
+          options={{ title: "Workouts Page" }}
         />
-        <Stack.Screen
-          name="ExercisePage"
-          component={ExercisePage}
-          options={{ title: "Exercise Page" }}
+        <Tab.Screen
+          name="LogExercise"
+          component={LogExercise}
+          options={{ title: "LogExercise" }}
         />
-      </Stack.Navigator>
-      {/* <View style={styles.container}>
-        <Text>Hello World!</Text>
-        <StatusBar style="auto" />
-        <SetRepWeight />
-        <Button
-          color="orange"
-          title="click"
-          onPress={() =>
-            Alert.alert("Title", "message", [
-              { text: "yes", onPress: () => console.log("yes clicked") },
-              { text: "No", onPress: () => console.log("no clicked") },
-            ])
-          }
+        <Tab.Screen
+          name="ProfilePage"
+          component={ProfilePage}
+          options={{ title: "ProfilePage" }}
         />
-      </View> */}
+        <Tab.Screen
+          name="Stats Page"
+          component={Statspage}
+          options={{ title: "Stats Page" }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsPage}
+          options={{ title: "Settings Page" }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
