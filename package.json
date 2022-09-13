@@ -8,7 +8,10 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@expo/webpack-config": "^0.17.0",
+    "@mui/material": "^5.10.5",
     "@react-native-community/hooks": "latest",
     "@react-navigation/bottom-tabs": "^6.3.3",
     "@react-navigation/native": "^6.0.12",
