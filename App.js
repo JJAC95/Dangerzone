@@ -1,13 +1,9 @@
-import { StatusBar } from "expo-status-bar";
 import Constants from "expo-constants";
 import React from "react";
 import { StyleSheet, Text, View, Button, Alert, Platform } from "react-native";
 import { useDimensions } from "@react-native-community/hooks";
-import { SetRepWeight } from "./components/SetRepWeight";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ExerciseList } from "./components/ExerciseList";
-import { ExercisePage } from "./components/ExercisePage";
 import { WorkoutsPage } from "./components/WorkoutsPage";
 import { LogExercise } from "./components/LogExercise";
 import { ProfilePage } from "./components/ProfilePage";
@@ -15,7 +11,7 @@ import { Homepage } from "./components/Homepage";
 import { Statspage } from "./components/StatsPage";
 import { SettingsPage } from "./components/SettingsPage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import { MaterialIcons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -23,7 +19,32 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === "Home") {
+              iconName = "home";
+            } else if (route.name === "Workouts Page") {
+              iconName = "fitness-center";
+            } else if (route.name === "LogExercise") {
+              iconName = "post-add";
+            } else if (route.name === "ProfilePage") {
+              iconName = "person";
+            } else if (route.name === "Stats Page") {
+              iconName = "insert-chart";
+            } else if (route.name === "Settings") {
+              iconName = "settings";
+            }
+
+            // You can return any component that you like here!
+            return <MaterialIcons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: "tomato",
+          tabBarInactiveTintColor: "gray",
+        })}
+      >
         <Tab.Screen
           name="Home"
           component={Homepage}
