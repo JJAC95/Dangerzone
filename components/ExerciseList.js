@@ -1,5 +1,7 @@
-import { Button } from "react-native";
-
-export const ExerciseList = ({ navigation }) => {
-  return <p>test</p>;
+import { exercises } from "../constants/exercises";
+import { AccordionList } from "./shared/AccordionList";
+export const ExerciseList = ({ navigation, route }) => {
+  return (
+    <AccordionList base={exercises} navigation={navigation} type={"exercise"} />
+  );
 };
